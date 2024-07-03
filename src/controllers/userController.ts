@@ -16,7 +16,7 @@ export const createUser = async (req: Request, res: Response) => {
     const user = await UserModel.create({ name, email, password: hashedPassword });
 
     return res.status(201).json(user);
-  } catch (error) {
+  } catch (error: any) {  // Cast error to any
     return res.status(500).json({ error: error.message });
   }
 };
